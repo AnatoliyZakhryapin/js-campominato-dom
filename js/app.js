@@ -59,9 +59,11 @@ btnStartDOMElement.addEventListener("click", function(){
     const cellDOMElements = gridDOMElement.querySelectorAll(".cell");
     // console.log(cellDOMElements);
 
-    //         - Creare il ciclo for per aggiungere evento su ogni elemento del dom
-   
+    // RESET counter
+    counterDOMElement.innerHTML = 0;
+    counter = 0;
 
+    //         - Creare il ciclo for per aggiungere evento su ogni elemento del dom
     for (let i = 0; i < cellDOMElements.length; i++){
         const currentCellElement = cellDOMElements[i];
         // console.log(currentCellElement);
@@ -86,6 +88,7 @@ btnStartDOMElement.addEventListener("click", function(){
                 counter++;
                 console.log(counter);
                 counterDOMElement.innerHTML = counter;
+               
             }
             
 			// prendo il numero della casella
