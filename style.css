@@ -10,7 +10,7 @@
     --white: #FFFFFF;
     --border: 12px;
     --border-cell: 8px;
-    --border-cell-selected: 2px;
+    --border-cell-selected: 4px;
 }
 
 .app {
@@ -46,6 +46,34 @@ main {
     border-bottom: var(--border) solid var(--white);
 }
 
+.row {
+    border-left: var(--border) solid var(--dark-grey);
+    border-top: var(--border) solid var(--dark-grey);
+    border-right: var(--border) solid var(--white);
+    border-bottom: var(--border) solid var(--white);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.col {
+    border-left: var(--border-cell-selected) solid var(--white);
+    border-top: var(--border-cell-selected) solid var(--white);
+    border-right: var(--border-cell-selected) solid var(--dark-grey);
+    border-bottom: var(--border-cell-selected) solid var(--dark-grey);
+}
+
+.col-3 {
+    flex-basis: calc(100% * 0.3);
+}
+
+.col.col-2 {
+    flex-basis: calc(100% * 0.2);
+    display: flex;
+    justify-content: center;
+    border: var(--border-cell-selected) solid var(--dark-grey);
+}
+
 .cell {
     aspect-ratio: 1;
     border: 1px solid black;
@@ -61,6 +89,7 @@ main {
 
 .cell.selected {
     border: var(--border-cell-selected) solid var(--dark-grey);
+    border-bottom: none;
 }
 
 .cell-10 {
@@ -73,10 +102,6 @@ main {
 
 .cell-7 {
     width: calc(100% / 7);
-}
-
-.selected {
-    background-color: chartreuse;
 }
 
 .bg-red {
@@ -98,14 +123,72 @@ main {
 }
 
 .messege-game-over {
+    font-family: 'Pixelify Sans', sans-serif;
     color: red;
-    font-size: 80px;
+    font-size: 120px;
     font-weight: bold;
 }
 
 .messege-win {
+    font-family: 'Pixelify Sans', sans-serif;
     color: greenyellow;
-    font-size: 80px;
+    font-size: 120px;
     font-weight: bold;
 }
 
+.counter-display {
+    position: relative;
+    background-color: black;
+    padding: 10px 0px;
+}
+
+.counter {
+    font-family: Digital Numbers;
+    line-height: 120px;
+    font-size: 120px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
+
+.counter-over {
+    color: rgba(112, 0, 0, 0.493);
+}
+
+#counter {
+    position: absolute;
+    color: red;
+    top: 10px;
+    right: 0;
+}
+
+#btn-start {
+    width: 100%;
+    font-size: 42px;
+    font-weight: 700;
+    border: 0;
+    background: none;
+    border-left: var(--border-cell) solid var(--white);
+    border-top: var(--border-cell) solid var(--white);
+    border-right: var(--border-cell) solid var(--dark-grey);
+    border-bottom: var(--border-cell) solid var(--dark-grey);
+}
+
+.col.col-2:active {
+   border-bottom: none;
+   border-right: none;
+}
+
+#btn-start:active {
+    border-left: 10px solid var(--white);
+    border-top: 10px solid var(--white);
+ }
+
+ .level-game {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 42px;
+    font-weight: 700;
+ }

@@ -84,7 +84,7 @@ btnStartDOMElement.addEventListener("click", function(){
                         </div>
                     `;;
             } else if (!bombsArray.includes(currentNumber)){
-                currentCellElement.classList.add('bg-skyblue');
+                currentCellElement.classList.add('selected');
                 counter++;
                 console.log(counter);
                 counterDOMElement.innerHTML = counter;
