@@ -7,39 +7,37 @@
     <title>Griglia Campo Minato</title>
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <button id="btn-start">start</button>
-                </div>
-                <div class="col">
-                    <label>Level game</label>
-                    <select name="level-game" id="select">
-                        <option value="10">Beginner</option>
-                        <option value="9">Middle</option>
-                        <option value="7">Expert</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <div>
-                        Score counter
+    <div class="app">
+        <main>
+            <section  class="section-game">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <button id="btn-start">start</button>
+                        </div>
+                        <div class="col">
+                            <label>Level game</label>
+                            <select name="level-game" id="select">
+                                <option value="10">Beginner</option>
+                                <option value="9">Middle</option>
+                                <option value="7">Expert</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <div>
+                                Score counter
+                            </div>
+                            <span id="counter">0</span>
+                        </div>
                     </div>
-                    <span id="counter">0</span>
                 </div>
-            </div>
-        </div>
-    </header>
-    <main>
-        <section  class="section-game">
-            <div class="container">
-                <div class="grid">
+                <div class="container">
+                    <div class="grid">
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
-    
+            </section>
+        </main>
+    </div>
     <script src="./js/app.js"></script>
 </body>
 </html>

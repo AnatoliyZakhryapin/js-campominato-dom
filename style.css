@@ -4,19 +4,46 @@
     box-sizing: border-box;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
+:root {
+    --light-gray: #C6C6C6;
+    --dark-grey: #808080;
+    --white: #FFFFFF;
+    --border: 12px;
+    --border-cell: 8px;
+    --border-cell-selected: 2px;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+   padding: 80px 0px;
+   background-color: black;
+   flex-grow: 1;
 }
 
 .section-game {
-    padding: 80px 0px;
+    padding: 40px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--light-gray);
+    border-left: var(--border) solid var(--white);
+    border-top: var(--border) solid var(--white);
+    border-right: var(--border) solid var(--dark-grey);
+    border-bottom: var(--border) solid var(--dark-grey);
 }
 
 .grid {
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    border-left: var(--border) solid var(--dark-grey);
+    border-top: var(--border) solid var(--dark-grey);
+    border-right: var(--border) solid var(--white);
+    border-bottom: var(--border) solid var(--white);
 }
 
 .cell {
@@ -26,6 +53,14 @@
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
+    border-left: var(--border-cell) solid var(--white);
+    border-top: var(--border-cell) solid var(--white);
+    border-right: var(--border-cell) solid var(--dark-grey);
+    border-bottom: var(--border-cell) solid var(--dark-grey);
+}
+
+.cell.selected {
+    border: var(--border-cell-selected) solid var(--dark-grey);
 }
 
 .cell-10 {
