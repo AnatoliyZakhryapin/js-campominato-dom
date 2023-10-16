@@ -84,8 +84,10 @@ btnStartDOMElement.addEventListener("click", function(){
                         </div>
                     `;;
             } else if (!bombsArray.includes(currentNumber)){
-                currentCellElement.classList.add('selected');
-                counter++;
+                if(!currentCellElement.classList.contains("selected")){
+                    currentCellElement.classList.add('selected');
+                    counter++;
+                }
                 console.log(counter);
                 counterDOMElement.innerHTML = counter;
                 if (counter === (maxRange - number)){
