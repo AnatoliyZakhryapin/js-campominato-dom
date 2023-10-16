@@ -61,15 +61,17 @@ btnStartDOMElement.addEventListener("click", function(){
     //     // - Chiamare l'evento click per currentCell e assegnare la funzione "onCellClick"
     //     currentCellElement.addEventListener("click", onCellClick)
     // }
-
+   
+    let counter = 0; // - counter click
     gridDOMElement.addEventListener('click', function (event) {
-        console.log(event.target)
-    
         const currentCellElement = event.target
         const currentNumber = parseInt(currentCellElement.innerHTML);
         console.log(currentNumber)
-        onCellClick(bombsArray,currentNumber,currentCellElement);
+        onCellClick(bombsArray,currentNumber,currentCellElement)
         console.log(event.target)
+
+        counter++;
+        console.log(counter)
     })
 });
 
