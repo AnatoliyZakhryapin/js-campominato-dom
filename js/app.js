@@ -18,8 +18,14 @@ const btnStartDOMElement = document.getElementById("btn-start");
 //     - Dichiarare la variabile "selectDOMElement" per recuperrare il valore dal nostro select
 const selectDOMElement = document.getElementById("select");
 // console.log(selectDOMElement);
-//     - Creare evento click sul btn-startDOMElement   
+//     - Creare evento click sul btn-startDOMElement  
+
+let gridListenerAttached = false;
+
+let counter = 0; // - counter click
+
 btnStartDOMElement.addEventListener("click", function(){
+
     //         - Chiamare la funzione "deleteContentDOMElement" per svuotare il nostro contenuto con ogni 
     deleteContentDOMElement(gridDOMElement);
     //         - Dichiarare la variabile "numberElement ed assegnare il valore tramite funzione valueSelect
@@ -62,17 +68,41 @@ btnStartDOMElement.addEventListener("click", function(){
     //     currentCellElement.addEventListener("click", onCellClick)
     // }
    
-    let counter = 0; // - counter click
-    gridDOMElement.addEventListener('click', function (event) {
+    counter = 0;
+
+    function gridClickListener(event) {
         const currentCellElement = event.target
         const currentNumber = parseInt(currentCellElement.innerHTML);
         console.log(currentNumber)
-        onCellClick(bombsArray,currentNumber,currentCellElement)
-        console.log(event.target)
+        if (bombsArray.includes(currentNumber)){
+            for (let i = 0; i < bombsArray.length; i++){
+                const iCellToChange = bombsArray[i] - 1;
+                cellDOMElements[iCellToChange].classList.add("bg-red");
+            }
+            const isWinner = false;
+            console.log("Iswinner",isWinner);
+            counter = 0;
+        } else if (!bombsArray.includes(currentNumber)) {
+            currentCellElement.classList.add("bg-skyblue");
+            counter++;
+        } else {
+            if (counter === (maxRange - number)){
+                const isWinner = true;
+                console.log("Iswinner",isWinner);
+                console.log(counter);
+                counter = 0;
+            }
+        }
+        // - SE utente ha vinto
+			// - stampiamo hai vinto con il punteggio
+        console.log("counter", counter);
+    
+    }
 
-        counter++;
-        console.log(counter)
-    })
+    if (gridListenerAttached === false) {
+        gridDOMElement.addEventListener('click', gridClickListener);
+        gridListenerAttached = true;
+    }
 });
 
 // FUNZIONI 
@@ -98,13 +128,13 @@ function creaContentDOMElement(numberElement, classElement, DOMElement){
 // }
 
 // - funzione onCellClick()
-function onCellClick(bombsArray,currentNumber,currentCellElement){
-    if (bombsArray.includes(currentNumber)){
-        currentCellElement.classList.add("bg-red");
-    } else {
-        currentCellElement.classList.add("bg-skyblue");
-    }
-}
+// function onCellClick(bombsArray,currentNumber,currentCellElement){
+//     if (bombsArray.includes(currentNumber)){
+//         currentCellElement.classList.add("bg-red");
+//     } else {
+//         currentCellElement.classList.add("bg-skyblue");
+//     }
+// }
 
 // - funzione crea un array dei numeri random tra minRange e maxRange con un numero massimo di array number 
 function getArrayOfRandomIntBetween(minRange,maxRange,number){
