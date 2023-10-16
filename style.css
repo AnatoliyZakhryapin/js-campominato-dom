@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section-game {
+    padding: 80px 0px;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    aspect-ratio: 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.cell-10 {
+    width: calc(100% / 10);
+}
+
+.cell-9 {
+    width: calc(100% / 9);
+}
+
+.cell-7 {
+    width: calc(100% / 7);
+}
+
+.selected {
+    background-color: chartreuse;
+}
