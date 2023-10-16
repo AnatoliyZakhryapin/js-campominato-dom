@@ -54,13 +54,23 @@ btnStartDOMElement.addEventListener("click", function(){
     // console.log(cellDOMElement);
 
     //         - Creare il ciclo for per aggiungere evento su ogni elemento del dom
-    for (let i = 0; i < cellDOMElements.length; i++){
-        const currentCellElement = cellDOMElements[i];
-        // console.log(currentCellElement);
+    // for (let i = 0; i < cellDOMElements.length; i++){
+    //     const currentCellElement = cellDOMElements[i];
+    //     // console.log(currentCellElement);
 
-        // - Chiamare l'evento click per currentCell e assegnare la funzione "onCellClick"
-        currentCellElement.addEventListener("click", onCellClick)
-    }
+    //     // - Chiamare l'evento click per currentCell e assegnare la funzione "onCellClick"
+    //     currentCellElement.addEventListener("click", onCellClick)
+    // }
+
+    gridDOMElement.addEventListener('click', function (event) {
+        console.log(event.target)
+    
+        const currentCellElement = event.target
+        const currentNumber = parseInt(currentCellElement.innerHTML);
+        console.log(currentNumber)
+        onCellClick(bombsArray,currentNumber,currentCellElement);
+        console.log(event.target)
+    })
 });
 
 // FUNZIONI 
@@ -80,9 +90,18 @@ function creaContentDOMElement(numberElement, classElement, DOMElement){
         DOMElement.innerHTML += html;
     }
 }
+// // - funzione onCellClick()
+// function onCellClick(){
+//     this.classList.add("selected");
+// }
+
 // - funzione onCellClick()
-function onCellClick(){
-    this.classList.add("selected");
+function onCellClick(bombsArray,currentNumber,currentCellElement){
+    if (bombsArray.includes(currentNumber)){
+        currentCellElement.classList.add("bg-red");
+    } else {
+        currentCellElement.classList.add("bg-skyblue");
+    }
 }
 
 // - funzione crea un array dei numeri random tra minRange e maxRange con un numero massimo di array number 
