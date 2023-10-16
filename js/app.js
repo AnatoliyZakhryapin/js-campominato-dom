@@ -19,8 +19,6 @@ const btnStartDOMElement = document.getElementById("btn-start");
 const selectDOMElement = document.getElementById("select");
 // console.log(selectDOMElement);
 
-let counter = 0; // - counter click
-
 //     - Creare evento click sul btn-startDOMElement  
 btnStartDOMElement.addEventListener("click", function(){
 
@@ -55,54 +53,82 @@ btnStartDOMElement.addEventListener("click", function(){
     creaContentDOMElement(numberElement, className, gridDOMElement);
     //         - Dichiarare la variabile "cellDOMElement" per recuperare tutte le celle
     const cellDOMElements = gridDOMElement.querySelectorAll(".cell");
-    // console.log(cellDOMElement);
+    // console.log(cellDOMElements);
 
     //         - Creare il ciclo for per aggiungere evento su ogni elemento del dom
-    // for (let i = 0; i < cellDOMElements.length; i++){
-    //     const currentCellElement = cellDOMElements[i];
-    //     // console.log(currentCellElement);
+    for (let i = 0; i < cellDOMElements.length; i++){
+        const currentCellElement = cellDOMElements[i];
+        // console.log(currentCellElement);
 
-    //     // - Chiamare l'evento click per currentCell e assegnare la funzione "onCellClick"
-    //     currentCellElement.addEventListener("click", onCellClick)
-    // }
-   
-    counter = 0; // - riassegnamo il valore di counter
+        // - Chiamare l'evento click per currentCell e assegnare la funzione 
+        currentCellElement.addEventListener('click', function () {
+            const currentNumber =  parseInt(currentCellElement.innerHTML);
+			if(bombsArray.includes(currentNumber)){
+                for (let i = 0; i < bombsArray.length; i++){
+                    const iCellToChange = bombsArray[i] - 1;
+                    cellDOMElements[iCellToChange].classList.add("bg-red");
+                }
+                currentCellElement.classList.add("bg-red");
+                console.log("Partita Terminata")
+                gridDOMElement.innerHTML += `
+                        <div class="cover">
+                            <div class="messege-game-over">GAME OVER</div>
+                        </div>
+                    `;;
+            } else if (!bombsArray.includes(currentNumber)){
+                currentCellElement.classList.add('bg-skyblue')
+            }
+            
+			// prendo il numero della casella
 
-    // - creamo la funzione gridClickListener
-    const gridClickListener = (event) => {
-        const currentCellElement = event.target
-        const currentNumber = parseInt(currentCellElement.innerHTML);
-        console.log(currentNumber)
-        if (bombsArray.includes(currentNumber)){
-            for (let i = 0; i < bombsArray.length; i++){
-                const iCellToChange = bombsArray[i] - 1;
-                cellDOMElements[iCellToChange].classList.add("bg-red");
-            }
-            const isWinner = false;
-            console.log("Partita Terminata");
-            counter = 0;
-        } else if (!bombsArray.includes(currentNumber)) {
-            currentCellElement.classList.add("bg-skyblue");
-            counter++;
-        } else {
-            if (counter === (maxRange - number)){
-                const isWinner = true;
-                console.log("Partita Terminata Hai");
-                console.log(counter);
-                counter = 0;
-            }
-        }
-        
-        // - SE utente ha vinto
+			// - SE il numero della casella è presente nell'array di bombe
+			// - aggiungialo la classe bg-red
+			// - game over
+			// - ALTRIMENTI
+			// - incrementiamo il punteggio
+			// - aggiungo la classe bg-blue
+			// - SE utente ha vinto
 			// - stampiamo hai vinto con il punteggio
-        console.log("counter", counter);
+		})
     }
+   
+    // let counter = 0; // - riassegnamo il valore di counter
 
-    // Rimuove tutti eventi click precedentemente applicati
-    gridDOMElement.removeEventListener('click', gridClickListener);
+    // // - creamo la funzione gridClickListener
+    // function gridClickListener (event) {
+    //     const currentCellElement = event.target
+    //     const currentNumber = parseInt(currentCellElement.innerHTML);
+    //     console.log(currentNumber)
+    //     if (bombsArray.includes(currentNumber)){
+    //         for (let i = 0; i < bombsArray.length; i++){
+    //             const iCellToChange = bombsArray[i] - 1;
+    //             cellDOMElements[iCellToChange].classList.add("bg-red");
+    //         }
+    //         const isWinner = false;
+    //         console.log("Partita Terminata");
+    //         counter = 0;
+    //     } else if (!bombsArray.includes(currentNumber)) {
+    //         currentCellElement.classList.add("bg-skyblue");
+    //         counter++;
+    //     } else {
+    //         if (counter === (maxRange - number)){
+    //             const isWinner = true;
+    //             console.log("Partita Terminata Hai");
+    //             console.log(counter);
+    //             counter = 0;
+    //         }
+    //     }
+        
+    //     // - SE utente ha vinto
+	// 		// - stampiamo hai vinto con il punteggio
+    //     console.log("counter", counter);
+    // }
+    // // // Rimuove tutti eventi click precedentemente applicati
+    // // gridDOMElement.removeEventListener('click', gridClickListener);
 
-    // Chiama la funzione gridClickListener con evento click sul griDOMElement
-    gridDOMElement.addEventListener('click', gridClickListener);
+    // // Chiama la funzione gridClickListener con evento click sul griDOMElement
+    // gridDOMElement.addEventListener('click', gridClickListener);
+
 
 });
 
