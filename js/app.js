@@ -19,6 +19,10 @@ const btnStartDOMElement = document.getElementById("btn-start");
 const selectDOMElement = document.getElementById("select");
 // console.log(selectDOMElement);
 
+// counter scoure
+let counter = 0; 
+
+const counterDOMElement = document.getElementById("counter");
 //     - Creare evento click sul btn-startDOMElement  
 btnStartDOMElement.addEventListener("click", function(){
 
@@ -56,6 +60,8 @@ btnStartDOMElement.addEventListener("click", function(){
     // console.log(cellDOMElements);
 
     //         - Creare il ciclo for per aggiungere evento su ogni elemento del dom
+   
+
     for (let i = 0; i < cellDOMElements.length; i++){
         const currentCellElement = cellDOMElements[i];
         // console.log(currentCellElement);
@@ -76,7 +82,10 @@ btnStartDOMElement.addEventListener("click", function(){
                         </div>
                     `;;
             } else if (!bombsArray.includes(currentNumber)){
-                currentCellElement.classList.add('bg-skyblue')
+                currentCellElement.classList.add('bg-skyblue');
+                counter++;
+                console.log(counter);
+                counterDOMElement.innerHTML = counter;
             }
             
 			// prendo il numero della casella
