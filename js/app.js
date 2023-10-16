@@ -26,16 +26,27 @@ btnStartDOMElement.addEventListener("click", function(){
     const numberElement = valueSelect(selectDOMElement);
     // console.log(numberElement);
 
-    // Dichiarare la variabile className
+    // Dichiarare le variabile 
     let className;
+    const minRange = 1;
+    let maxRange;
+    const number = 16;
     if (numberElement == 10){
-        className = "cell cell-10"
+        className = "cell cell-10";
+        maxRange = 100; 
     } else if (numberElement == 9){
-        className = "cell cell-9"
+        className = "cell cell-9";
+        maxRange = 81;
     } else if (numberElement == 7){
-        className = "cell cell-7"
+        className = "cell cell-7";
+        maxRange = 49;
     }
     // console.log(className)
+
+    // creare array con le bombe
+    const bombsArray = getArrayOfRandomIntBetween(minRange,maxRange,number);
+    console.log(bombsArray);
+
     //         - Chiamare la funzione "creaContenDOMElement"
     creaContentDOMElement(numberElement, className, gridDOMElement);
     //         - Dichiarare la variabile "cellDOMElement" per recuperare tutte le celle
@@ -72,4 +83,29 @@ function creaContentDOMElement(numberElement, classElement, DOMElement){
 // - funzione onCellClick()
 function onCellClick(){
     this.classList.add("selected");
+}
+
+// - funzione crea un array dei numeri random tra minRange e maxRange con un numero massimo di array number 
+function getArrayOfRandomIntBetween(minRange,maxRange,number){
+    const numbersArray = []; 
+
+    while(numbersArray.length < number){
+        // generare un numero random da rangeMin a rangeMAx
+        const n = getRandomIntInclusive(minRange,maxRange);
+
+        // SE n non è presente nell'array fare push di n
+        if (!numbersArray.includes(n)){
+			// pushare il numero nell'array
+			numbersArray.push(n);
+		}
+    }
+    // return array con i numeri generati
+    return numbersArray;
+}
+
+// - funzione getRandomIntInclusive - crea il numero random nel range indicato
+function getRandomIntInclusive(min, max){
+	min = Math.ceil(min)
+	max = Math.floor(max)
+	return Math.floor(Math.random() * (max - min + 1) + min) // The maximum is inclusive and the minimum is inclusive
 }
