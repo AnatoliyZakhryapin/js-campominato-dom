@@ -88,19 +88,14 @@ btnStartDOMElement.addEventListener("click", function(){
                 counter++;
                 console.log(counter);
                 counterDOMElement.innerHTML = counter;
-               
+                if (counter === (maxRange - number)){
+                    gridDOMElement.innerHTML += `
+                        <div class="cover">
+                            <div class="messege-win">YOU WIN</div>
+                        </div>
+                    `;;
+                }
             }
-            
-			// prendo il numero della casella
-
-			// - SE il numero della casella è presente nell'array di bombe
-			// - aggiungialo la classe bg-red
-			// - game over
-			// - ALTRIMENTI
-			// - incrementiamo il punteggio
-			// - aggiungo la classe bg-blue
-			// - SE utente ha vinto
-			// - stampiamo hai vinto con il punteggio
 		})
     }
    
