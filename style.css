@@ -37,6 +37,7 @@ main {
 }
 
 .grid {
+    min-height: 500px;
     font-size: 26px;
     font-weight: 700;
     display: flex;
@@ -205,4 +206,8 @@ main {
 
  .f-red {
     color: red;
+ }
+
+ .mb-50 {
+    margin-bottom: 50px;
  }
