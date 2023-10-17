@@ -71,7 +71,7 @@ btnStartDOMElement.addEventListener("click", function(){
         // - Chiamare l'evento click per currentCell e assegnare la funzione 
         currentCellElement.addEventListener('click', function () {
             const currentNumber =  parseInt(currentCellElement.innerHTML);
-			if(bombsArray.includes(currentNumber)){
+			if(isBomb(currentNumber, bombsArray)){
                 for (let i = 0; i < bombsArray.length; i++){
                     const iCellToChange = bombsArray[i] - 1;
                     cellDOMElements[iCellToChange].classList.add("bg-red");
@@ -83,7 +83,7 @@ btnStartDOMElement.addEventListener("click", function(){
                             <div class="messege-game-over">GAME OVER</div>
                         </div>
                     `;;
-            } else if (!bombsArray.includes(currentNumber)){
+            } else if (!isBomb(currentNumber, bombsArray)){
                 if(!currentCellElement.classList.contains("selected")){
                     currentCellElement.classList.add('selected');
                     counter++;
@@ -125,13 +125,13 @@ btnStartDOMElement.addEventListener("click", function(){
                         // console.log("left", left)
                         // console.log("middle", middle)
                         // console.log("right", right)
-                        if(bombsArray.includes(left)){
+                        if(isBomb(top, bombsArray)){
                             array.push(top)
                         }
-                        if(bombsArray.includes(middle)){
+                        if(isBomb(middle, bombsArray)){
                             array.push(middle)
                         }
-                        if(bombsArray.includes(right)
+                        if(isBomb(right, bombsArray)
                         ){
                             array.push(right)
                         }
@@ -220,4 +220,11 @@ function getRandomIntInclusive(min, max){
 	min = Math.ceil(min)
 	max = Math.floor(max)
 	return Math.floor(Math.random() * (max - min + 1) + min) // The maximum is inclusive and the minimum is inclusive
+}
+
+function isBomb(number, bombs){
+    if(bombs.includes(number)){
+        return true;
+    }
+    return false;
 }
