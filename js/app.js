@@ -88,6 +88,83 @@ btnStartDOMElement.addEventListener("click", function(){
                     currentCellElement.classList.add('selected');
                     counter++;
                 }
+                //  Logica per assegnazione dei numeri con le bombe presenti all'intorno 
+                let controlCell = () => {
+                    const line = parseInt(valueSelect(selectDOMElement));
+                    const qLine = parseInt(valueSelect(selectDOMElement));
+                    // console.log(line, qLine)
+                    const last = line * qLine;
+                    const array = [];
+                    let left = currentNumber - line - 1;
+                    let middle = currentNumber - line;
+                    let right = currentNumber - line + 1;
+                    let n = 3;
+                    
+                    // - Se si parte dalla prima linea le variabili prendono seguenti valori:
+                    if (middle < 0) {
+                        left = currentNumber - 1;
+                        middle = currentNumber;
+                        right = currentNumber + 1;
+                        n = 2;
+                    }
+                    // - Se si parte dalla ultima linea la variabile n prende seguente valore:
+                    if (middle + line * 2 > last) {
+                        n = 2;
+                    }
+                    // - Se si parte dalla prima colona di sinistra la variabile left prende seguente valore:
+                    if ((left % line) === 0) {
+                        left = 0;
+                    }
+                    // - Se si parte dalla prima colona di sinistra la variabile right prende seguente valore:
+                    if (currentNumber % line === 0) {
+                        right = 0;
+                    }
+                    // - Ciclo per stabilire quantità di bombe all'intorno di currenteNumber
+                    for (let i = 0; i < n; i++) {
+                        // console.log("ciclo " + i)
+                        // console.log("left", left)
+                        // console.log("middle", middle)
+                        // console.log("right", right)
+                        if(bombsArray.includes(left)){
+                            array.push(top)
+                        }
+                        if(bombsArray.includes(middle)){
+                            array.push(middle)
+                        }
+                        if(bombsArray.includes(right)
+                        ){
+                            array.push(right)
+                        }
+                        if(i < n - 1 ){
+                            if (left > 0) {
+                                left += line;
+                            }
+                            middle += line;
+                            if(right > 0){
+                                right += line;
+                            }
+                        }
+                        // console.log("left", left)
+                        // console.log("middle", middle)
+                        // console.log("right", right)
+                    }
+                    // Inserimento del numero delle bombe che ci sono all'intorno
+                    let arrayLength = array.length;
+                    if (arrayLength === 0){
+                        currentCellElement.innerHTML = "";
+                    } else {
+                        currentCellElement.innerHTML = arrayLength;
+                    }
+                    if(arrayLength === 1){
+                        currentCellElement.classList.add("f-green");
+                    } else if (arrayLength === 2 ) {
+                        currentCellElement.classList.add("f-blue");
+                    } else {
+                        currentCellElement.classList.add("f-red");
+                    }
+                    return array;
+                }
+                console.log("CONTROL", controlCell())
                 console.log(counter);
                 counterDOMElement.innerHTML = counter;
                 if (counter === (maxRange - number)){
