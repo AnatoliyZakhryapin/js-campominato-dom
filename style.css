@@ -37,6 +37,8 @@ main {
 }
 
 .grid {
+    font-size: 26px;
+    font-weight: 700;
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -191,4 +193,16 @@ main {
     gap: 20px;
     font-size: 42px;
     font-weight: 700;
+ }
+
+ .f-blue {
+    color: blue;
+ }
+
+ .f-green {
+    color: green;
+ }
+
+ .f-red {
+    color: red;
  }
