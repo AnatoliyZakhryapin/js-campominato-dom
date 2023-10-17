@@ -177,6 +177,45 @@ btnStartDOMElement.addEventListener("click", function(){
             }
 		})
     }
+   
+    // let counter = 0; // - riassegnamo il valore di counter
+
+    // // - creamo la funzione gridClickListener
+    // function gridClickListener (event) {
+    //     const currentCellElement = event.target
+    //     const currentNumber = parseInt(currentCellElement.innerHTML);
+    //     console.log(currentNumber)
+    //     if (bombsArray.includes(currentNumber)){
+    //         for (let i = 0; i < bombsArray.length; i++){
+    //             const iCellToChange = bombsArray[i] - 1;
+    //             cellDOMElements[iCellToChange].classList.add("bg-red");
+    //         }
+    //         const isWinner = false;
+    //         console.log("Partita Terminata");
+    //         counter = 0;
+    //     } else if (!bombsArray.includes(currentNumber)) {
+    //         currentCellElement.classList.add("bg-skyblue");
+    //         counter++;
+    //     } else {
+    //         if (counter === (maxRange - number)){
+    //             const isWinner = true;
+    //             console.log("Partita Terminata Hai");
+    //             console.log(counter);
+    //             counter = 0;
+    //         }
+    //     }
+        
+    //     // - SE utente ha vinto
+	// 		// - stampiamo hai vinto con il punteggio
+    //     console.log("counter", counter);
+    // }
+    // // // Rimuove tutti eventi click precedentemente applicati
+    // // gridDOMElement.removeEventListener('click', gridClickListener);
+
+    // // Chiama la funzione gridClickListener con evento click sul griDOMElement
+    // gridDOMElement.addEventListener('click', gridClickListener);
+
+
 });
 
 // FUNZIONI 
@@ -196,6 +235,19 @@ function creaContentDOMElement(numberElement, classElement, DOMElement){
         DOMElement.innerHTML += html;
     }
 }
+// // - funzione onCellClick()
+// function onCellClick(){
+//     this.classList.add("selected");
+// }
+
+// - funzione onCellClick()
+// function onCellClick(bombsArray,currentNumber,currentCellElement){
+//     if (bombsArray.includes(currentNumber)){
+//         currentCellElement.classList.add("bg-red");
+//     } else {
+//         currentCellElement.classList.add("bg-skyblue");
+//     }
+// }
 
 // - funzione crea un array dei numeri random tra minRange e maxRange con un numero massimo di array number 
 function getArrayOfRandomIntBetween(minRange,maxRange,number){
