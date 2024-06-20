@@ -24,4 +24,3 @@
         - Creare il ciclo for per aggiungere evento su ogni elemento del dom
             - Creare la variabile currentCellElement per sapere quale elemento è stato selezionato
             - Chiamare l'evento click per currentCell e assegnare la funzione "onCellClick"
-- Creare la funzione per generare un array con dei numeri che verrà utillizzato per le bombe
